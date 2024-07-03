@@ -1,2 +1,3 @@
-# Step-Academy-PHP
- Home and class works from PHP course in Step Academy
+# PHP-Course
+
+Home and class works from PHP courses
