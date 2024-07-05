@@ -9,9 +9,9 @@
 <body>
     <form method="post" action="">
         <label for="content">Enter content:</label><br>
-        <textarea id="content" name="content" rows="10" cols="50" required></textarea><br><br>
+        <textarea name="content" rows="10" cols="50" required></textarea><br><br>
         <label for="searchString">Enter string to search for:</label>
-        <input type="text" id="searchString" name="searchString" required><br><br>
+        <input type="text" name="searchString" required><br><br>
         <input type="submit" value="Count Repetitions">
     </form>
 

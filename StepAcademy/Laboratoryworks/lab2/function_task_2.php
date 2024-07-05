@@ -9,10 +9,10 @@
 <body>
 <form method="post" action="">
         <label for="number">Enter a number:</label>
-        <input type="number" step="any" id="number" name="number" required>
+        <input type="number" step="any" name="number" required>
         <br><br>
         <label for="degree">Enter the degree of rounding:</label>
-        <input type="number" id="degree" name="degree" required>
+        <input type="number" name="degree" required>
         <br><br>
         <input type="submit" value="Round">
     </form>
