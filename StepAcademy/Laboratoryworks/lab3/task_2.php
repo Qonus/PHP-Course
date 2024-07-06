@@ -4,7 +4,7 @@
         public $description;
         public $price;
 
-        public function __constuct(String $name, String $description, int $price) {
+        public function __construct(String $name, String $description, int $price) {
             $this->name = $name;
             $this->description = $description;
             $this->price = $price;
@@ -24,8 +24,11 @@
     $products = array(
         new Product("Chips", "Good Chips", 1000),
         new Product("Snacks", "Good Snacks", 1500),
+        new Product("Car", "Good Car", 90000),
+        new Product("bench", "Good bench", 700),
+        new Product("Ben", "Good Ben", 500),
     );
-
+    
     foreach ($products as $item) {
         $title = $item->name;
         $description = $item->description;
