@@ -59,7 +59,7 @@ trait QueryTrait {
         return $smth->rowCount();
     }
 
-    public function execute(string $sql, array $args = []) : bool {
+    public function execute(string $sql, array $args = []): bool {
         $stmt = $this->getConnection()->prepare($sql);
         return $stmt->execute($args);
     }
@@ -70,5 +70,3 @@ trait AdditionalTrait {
         return (int) $this->getConnection()->lastInsertId();
     }
 }
-
-?>
