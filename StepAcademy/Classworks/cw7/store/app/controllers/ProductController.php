@@ -33,7 +33,7 @@ class ProductController extends Controller {
 
             if ($item) {
                 $this->view->render('products/page', [
-                    // product_name должно быть как столбец в базе данных
+                    'title' => $item['product_name'],
                     'category' => $category,
                     'name' => $item['product_name'],
                     'price' => $item['price'],
