@@ -32,10 +32,15 @@ class ProductController extends Controller {
             $category = $categoryModel->getCategoryById($item['category_id'])['category_name'];
 
             if ($item) {
-                $this->view->render('products/page', [
+                $this->view->render('products/individual-product-page', [
                     'title' => $item['product_name'],
                     'category' => $category,
                     'name' => $item['product_name'],
+                    'description' => $item['description'],
+                    'age_range' => $item['age_range'],
+                    'weight' => $item['weight'],
+                    'dimensions' => $item['dimensions'],
+                    'release_date' => $item['release_date'],
                     'price' => $item['price'],
                     'stock_quantity' => $item['stock_quantity'],
                 ]);

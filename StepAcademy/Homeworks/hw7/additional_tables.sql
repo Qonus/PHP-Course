@@ -19,6 +19,7 @@ CREATE TABLE products (
     stock_quantity INT NOT NULL,
 
     age_range VARCHAR(32) NOT NULL,
+    player_number VARCHAR(32) NOT NULL,
     weight DECIMAL(5, 2) NOT NULL,
     dimensions VARCHAR(32) NOT NULL,
     release_date DATE NOT NULL,

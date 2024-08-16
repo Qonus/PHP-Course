@@ -1,10 +1,27 @@
 * {
     padding: 0;
-    margin: 0;
     position: relative;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     box-sizing: border-box;
+}
 
+a {
+    text-align: center;
+    color: black;
+}
+
+h1 {
+    text-align: center;
+}
+
+a {
+    color: orange;
+    text-decoration: none;
+}
+
+main {
+    width: clamp(300px, 80%, 700px);
+    margin: 0 auto;
 }
 
 .card {
@@ -17,5 +34,5 @@
     background-color: white;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 0px;
 }

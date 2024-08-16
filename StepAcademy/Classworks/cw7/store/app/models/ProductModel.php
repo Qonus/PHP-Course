@@ -12,8 +12,13 @@ class ProductModel extends Model {
         return (array)$this->db->getRow($sql, $args);
     }
 
+    public function getLastProducts() {
+        $sql = 'SELECT * FROM products ORDER BY product_id DESC LIMIT 3';
+        return (array)$this->db->getAll($sql);
+    }
+
     public function getAllProducts() {
-        return $this->db->getAll("SELECT * FROM products");
+        return (array)$this->db->getAll("SELECT * FROM products");
     }
 
     public function createProduct($data) {

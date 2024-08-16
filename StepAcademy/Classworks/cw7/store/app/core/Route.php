@@ -20,6 +20,7 @@ class Route {
         }
         // 404 Not Found
         http_response_code(404);
-        echo "404 Not Found";
+        $not_found_page = new View();
+        $not_found_page->render("layouts/not-found", [ 'title' => "Not found"]);
     }
 }
