@@ -1,46 +1,104 @@
+USE online_store;
+
+-- Insert users
+INSERT INTO users (user_type, first_name, last_name, email, phone, password, salt)
+VALUES 
+('Administrator', 'Admin', 'User', 'admin@onlinestore.com', '1234567890', 'hashedpassword', 'somesalt'),
+('Customer', 'John', 'Doe', 'johndoe@example.com', '0987654321', 'hashedpassword', 'somesalt'),
+('Customer', 'Jane', 'Doe', 'janedoe@example.com', '1112223333', 'hashedpassword', 'somesalt'),
+('Manager', 'James', 'Smith', 'jamessmith@example.com', '4445556666', 'hashedpassword', 'somesalt');
+
+-- Insert customers
+INSERT INTO customers (user_id) VALUES (2), (3);
+
+-- Insert addresses
+INSERT INTO addresses (address_label, customer_id, address_line1, city, state, postal_code, country)
+VALUES 
+('Home', 2, '123 Elm Street', 'Springfield', 'IL', '62704', 'USA'),
+('Work', 3, '456 Oak Street', 'Springfield', 'IL', '62701', 'USA');
+
+-- Update customers with default address
+UPDATE customers SET default_address_id = 1 WHERE user_id = 2;
+UPDATE customers SET default_address_id = 2 WHERE user_id = 3;
+
+-- Insert managers
+INSERT INTO managers (user_id, iin, birthday)
+VALUES 
+(4, '123456789012', '1980-01-01');
+
+-- Insert brands
+INSERT INTO brands (brand_name)
+VALUES 
+('Hasbro'),
+('Mattel'),
+('Lego'),
+('Funko');
+
+-- Insert categories
+INSERT INTO categories (category_name, parent_category_id)
+VALUES 
+('Board Games', NULL),
+('Card Games', NULL),
+('Video Games', NULL),
+('Outdoor Games', NULL),
+('Party Games', 1),
+('Strategy Games', 1),
+('Children Games', 1),
+('Classic Games', 1);
+
+-- Insert products
 INSERT INTO products (product_name, description, brand_id, category_id, price, stock_quantity, age_range, player_number, weight, dimensions, release_date)
-VALUES
-('Mystery Mansion', 'A thrilling mystery-solving game set in a haunted mansion.', 1, 2, 29.99, 100, '12+', '2-6', 1.50, '30x30x7 cm', '2023-03-15'),
-('Galaxy Conquest', 'A space strategy game with intergalactic battles and alliances.', 2, 3, 49.99, 50, '14+', '2-4', 2.00, '40x30x10 cm', '2023-05-01'),
-('Castle Builders', 'A medieval building and strategy game where players construct castles.', 1, 1, 34.99, 200, '10+', '2-5', 1.75, '35x25x8 cm', '2022-11-20'),
-('Dungeon Quest', 'Explore dungeons and fight monsters in this cooperative adventure game.', 3, 2, 44.99, 75, '12+', '1-4', 2.20, '32x32x10 cm', '2024-01-10'),
-('Super Trivia Challenge', 'A fast-paced trivia game with a variety of categories.', 4, 4, 24.99, 150, '8+', '2-8', 0.80, '25x25x5 cm', '2023-07-25'),
-('Pirate Plunder', 'A high-seas adventure game involving treasure hunts and pirate ships.', 5, 2, 39.99, 120, '10+', '2-6', 1.60, '28x28x6 cm', '2023-09-18'),
-('Zombie Apocalypse', 'Survive the zombie outbreak in this thrilling survival game.', 6, 1, 54.99, 80, '14+', '1-5', 2.50, '36x36x12 cm', '2024-02-14'),
-('Robo Rescue', 'A game where players control robots to complete rescue missions.', 7, 3, 31.99, 110, '12+', '2-4', 1.40, '30x30x7 cm', '2023-04-22'),
-('Fantasy Realms', 'Build and explore fantasy worlds with a mix of magic and strategy.', 1, 2, 46.99, 60, '12+', '2-6', 2.00, '34x34x9 cm', '2023-10-05'),
-('Circus Showdown', 'A circus-themed game with performers, animals, and daring feats.', 8, 4, 27.99, 130, '8+', '2-6', 1.20, '28x28x6 cm', '2023-06-30'),
-('Detective Case Files', 'Solve criminal cases in this engaging detective game.', 2, 1, 42.99, 70, '12+', '1-4', 1.90, '31x31x8 cm', '2023-12-12'),
-('Space Explorers', 'Embark on interstellar missions and explore new planets.', 3, 2, 37.99, 90, '10+', '2-5', 1.80, '33x33x9 cm', '2024-03-20'),
-('Medieval Warfare', 'Strategize and battle in this epic medieval warfare game.', 4, 1, 49.99, 100, '14+', '2-6', 2.10, '38x38x10 cm', '2023-08-15'),
-('Treasure Hunt', 'A family-friendly game involving treasure maps and hidden gems.', 5, 2, 29.99, 150, '8+', '2-6', 1.00, '26x26x6 cm', '2023-05-18'),
-('Secret Agent', 'A game of espionage and intrigue where players are secret agents.', 6, 4, 36.99, 85, '12+', '2-4', 1.50, '29x29x7 cm', '2023-10-10'),
-('Magic Academy', 'Learn and master spells in this magical academy-themed game.', 7, 3, 41.99, 120, '10+', '2-5', 1.70, '32x32x8 cm', '2024-01-01'),
-('Alien Invasion', 'Defend Earth from an alien invasion in this strategic game.', 8, 1, 33.99, 95, '12+', '2-4', 1.60, '31x31x7 cm', '2023-11-08'),
-('Wizard Duel', 'Engage in magical duels and cast spells in this exciting game.', 1, 2, 45.99, 65, '10+', '2-6', 1.90, '34x34x9 cm', '2024-04-01'),
-('Ancient Relics', 'Discover ancient artifacts and solve puzzles in this adventure game.', 2, 3, 38.99, 100, '12+', '1-4', 2.20, '30x30x8 cm', '2023-06-05'),
-('Survival Island', 'Struggle for survival on a deserted island with this strategic game.', 3, 1, 50.99, 70, '14+', '2-6', 2.30, '35x35x11 cm', '2024-02-20'),
-('Race to the Finish', 'A fast-paced racing game with various tracks and obstacles.', 4, 2, 26.99, 130, '8+', '2-6', 1.00, '27x27x5 cm', '2023-07-05'),
-('Mythical Creatures', 'Encounter and interact with mythical creatures in this fantasy game.', 5, 4, 32.99, 110, '10+', '2-5', 1.70, '28x28x7 cm', '2023-09-12'),
-('Heroic Legends', 'A game of heroic quests and legendary adventures.', 6, 3, 48.99, 80, '12+', '1-4', 2.10, '33x33x10 cm', '2024-03-10'),
-('Time Travelers', 'Travel through time and solve historical puzzles in this unique game.', 7, 2, 35.99, 90, '12+', '2-4', 1.60, '30x30x8 cm', '2023-11-01'),
-('Jungle Safari', 'Experience an exciting safari adventure through the jungle.', 8, 4, 25.99, 140, '8+', '2-6', 1.10, '26x26x5 cm', '2023-08-30'),
-('Lost City', 'A game where players explore and discover a lost city.', 1, 1, 37.99, 75, '10+', '2-4', 1.80, '32x32x9 cm', '2023-04-10'),
-('Deep Sea Expedition', 'Explore the depths of the ocean and discover marine wonders.', 2, 3, 43.99, 85, '12+', '2-5', 2.00, '35x35x10 cm', '2024-01-25'),
-('Royal Court', 'Navigate the intrigues and power plays of a royal court.', 3, 2, 30.99, 100, '10+', '2-6', 1.50, '28x28x7 cm', '2023-06-15'),
-('Haunted House', 'A spooky game set in a haunted house full of surprises.', 4, 1, 28.99, 120, '10+', '2-6', 1.20, '27x27x6 cm', '2023-09-05'),
-('Battle of the Titans', 'A strategy game where players command powerful titans in battle.', 5, 3, 52.99, 90, '14+', '2-4', 2.30, '38x38x11 cm', '2024-02-01'),
-('Underworld Escape', 'Escape from the underworld in this thrilling adventure game.', 6, 4, 41.99, 70, '12+', '2-4', 1.80, '33x33x9 cm', '2023-12-20'),
-('Wilderness Survival', 'Survive in the wild with limited resources and tough challenges.', 7, 1, 34.99, 100, '14+', '1-4', 2.00, '30x30x8 cm', '2023-07-10'),
-('Space Pirates', 'Embark on a swashbuckling space adventure as a pirate.', 8, 2, 39.99, 110, '10+', '2-5', 1.70, '32x32x8 cm', '2023-11-30'),
-('Medieval Joust', 'Compete in medieval jousting tournaments and win glory.', 1, 3, 26.99, 130, '8+', '2-6', 1.10, '26x26x5 cm', '2024-03-15'),
-('Dragon Quest', 'Embark on an epic quest to find and defeat dragons.', 2, 1, 45.99, 80, '12+', '2-4', 2.20, '34x34x10 cm', '2023-08-01'),
-('Futuristic Battle', 'A strategy game set in a futuristic world with high-tech battles.', 3, 2, 48.99, 70, '14+', '2-6', 2.30, '36x36x11 cm', '2023-12-15'),
-('Adventure Island', 'Explore a mysterious island and uncover its secrets.', 4, 4, 27.99, 140, '10+', '2-6', 1.30, '28x28x6 cm', '2023-07-20'),
-('Mystic Forest', 'A magical game set in an enchanted forest filled with surprises.', 5, 3, 33.99, 100, '8+', '2-5', 1.50, '30x30x7 cm', '2023-10-01'),
-('Ancient Civilizations', 'Discover and build ancient civilizations in this strategic game.', 6, 1, 37.99, 90, '12+', '2-6', 1.80, '32x32x8 cm', '2023-11-15'),
-('Kingdoms of Glory', 'Rule and expand your kingdom in this exciting strategy game.', 7, 2, 46.99, 85, '12+', '2-5', 2.00, '34x34x9 cm', '2024-02-05'),
-('Epic Adventures', 'Experience epic adventures and quests in this fantasy game.', 8, 4, 49.99, 75, '10+', '2-6', 2.20, '35x35x10 cm', '2023-06-10'),
-('Wild West Showdown', 'Duel and strategize in the wild west with this action-packed game.', 1, 3, 32.99, 100, '12+', '2-4', 1.70, '31x31x7 cm', '2023-09-25'),
-('Galactic Traders', 'Trade and build your empire in a galactic setting.', 2, 1, 42.99, 95, '10+', '2-5', 2.00, '33x33x8 cm', '2024-01-05'),
-('Lost Worlds', 'Explore and conquer lost worlds filled with hidden treasures.', 3, 4, 38.99, 120, '12+', '2-6', 1.90, '32x32x9 cm', '2023-12-10');
+VALUES 
+('Monopoly', 'Classic board game for property trading.', 1, 7, 19.99, 100, '8+', '2-6 players', 2.5, '10x10x2 inches', '1935-01-01'),
+('Catan', 'Strategy game for trading and building.', 2, 6, 29.99, 50, '10+', '3-4 players', 3.0, '11x11x3 inches', '1995-06-01'),
+('Uno', 'Popular card game for all ages.', 2, 2, 9.99, 200, '7+', '2-10 players', 0.5, '4x4x1 inches', '1971-01-01'),
+('Jenga', 'Stacking game of physical skill.', 2, 4, 14.99, 150, '6+', '1+ players', 2.2, '8x3x3 inches', '1983-01-01'),
+('Fortnite', 'Popular battle royale video game.', 3, 3, 59.99, 75, '12+', '1+ players', 0.0, 'Digital Download', '2017-07-21'),
+('Clue', 'Mystery board game of deduction.', 1, 7, 24.99, 80, '8+', '3-6 players', 2.6, '10x10x2 inches', '1949-01-01'),
+('Risk', 'Strategy game of global domination.', 1, 6, 29.99, 60, '10+', '2-6 players', 3.1, '12x12x3 inches', '1957-01-01'),
+('Twister', 'Classic game of physical flexibility.', 2, 4, 16.99, 120, '6+', '2-4 players', 2.0, '10x10x2 inches', '1966-01-01'),
+('Minecraft', 'Open-world video game.', 3, 3, 26.95, 100, '7+', '1+ players', 0.0, 'Digital Download', '2011-11-18'),
+('Candy Land', 'Classic children’s board game.', 2, 8, 12.99, 140, '3+', '2-4 players', 2.0, '10x10x2 inches', '1949-01-01'),
+('Ticket to Ride', 'Cross-country train adventure game.', 3, 6, 44.99, 50, '8+', '2-5 players', 3.0, '12x12x3 inches', '2004-01-01'),
+('Scrabble', 'Classic word game.', 1, 7, 19.99, 110, '10+', '2-4 players', 2.5, '10x10x2 inches', '1938-01-01'),
+('Bananagrams', 'Fast-paced word game.', 2, 4, 14.99, 90, '7+', '1-8 players', 1.0, '7x3x3 inches', '2006-01-01'),
+('Exploding Kittens', 'Party game for people who are into kittens and explosions.', 4, 5, 19.99, 120, '7+', '2-5 players', 1.0, '8x4x2 inches', '2015-07-15'),
+('Codenames', 'Party word game.', 1, 5, 15.99, 85, '10+', '2-8 players', 1.1, '9x6x2 inches', '2015-09-01'),
+('Lego Star Wars', 'Buildable starships from the Star Wars series.', 3, 3, 49.99, 80, '8+', '1+ players', 3.0, 'N/A', '2005-04-02'),
+('Dixit', 'A storytelling game.', 3, 5, 34.99, 60, '8+', '3-6 players', 2.0, '12x12x2 inches', '2008-09-01'),
+('Boggle', 'Word game in a grid.', 1, 7, 9.99, 100, '8+', '1+ players', 1.5, '8x8x2 inches', '1972-01-01'),
+('Pandemic', 'Cooperative game to save the world from diseases.', 2, 6, 39.99, 70, '8+', '2-4 players', 2.5, '12x12x3 inches', '2008-01-01'),
+('Magic: The Gathering', 'Collectible card game.', 3, 2, 19.99, 130, '13+', '2+ players', 1.0, '4x3x2 inches', '1993-08-05'),
+('Pokemon TCG', 'Collectible card game based on the Pokémon franchise.', 2, 2, 24.99, 110, '6+', '2+ players', 1.0, '5x4x3 inches', '1996-10-20');
+
+-- Insert orders
+INSERT INTO orders (customer_id, total_amount) VALUES (2, 49.97), (3, 24.99);
+
+-- Insert order details
+INSERT INTO order_details (order_id, product_id, quantity, unit_price, total_price)
+VALUES 
+(1, 1, 1, 19.99, 19.99),
+(1, 2, 1, 29.99, 29.99),
+(2, 3, 1, 9.99, 9.99),
+(2, 4, 1, 14.99, 14.99);
+
+-- Insert product photos
+INSERT INTO product_photos (product_id, image_url, is_primary)
+VALUES 
+(1, 'monopoly.jpg', TRUE),
+(2, 'catan.jpg', TRUE),
+(3, 'uno.jpg', TRUE),
+(4, 'jenga.jpg', TRUE);
+
+-- Insert discounts
+INSERT INTO discounts (discount_code, discount_type, discount_value, start_date, end_date, min_purchase_amount)
+VALUES 
+('SAVE10', 'Percentage', 10.00, '2024-08-01 00:00:00', '2024-08-31 23:59:59', 50.00),
+('WELCOME5', 'Fixed Amount', 5.00, '2024-08-01 00:00:00', '2024-12-31 23:59:59', 20.00);
+
+-- Insert delivery methods
+INSERT INTO delivery_methods (method_name, price, estimated_delivery_time)
+VALUES 
+('Standard Shipping', 5.99, '5-7 business days'),
+('Express Shipping', 12.99, '2-3 business days'),
+('Overnight Shipping', 19.99, '1 business day');

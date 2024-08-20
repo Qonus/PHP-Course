@@ -1,6 +1,6 @@
 CREATE TABLE brands (
     brand_id INT AUTO_INCREMENT PRIMARY KEY,
-    brand_name VARCHAR(64) NOT NULL,
+    brand_name VARCHAR(64) NOT NULL
 );
 
 CREATE TABLE categories (
@@ -24,7 +24,7 @@ CREATE TABLE products (
     dimensions VARCHAR(32) NOT NULL,
     release_date DATE NOT NULL,
     FOREIGN KEY (brand_id) REFERENCES brands(brand_id),
-    FOREIGN KEY (category_id) REFERENCES categories(category_id),
+    FOREIGN KEY (category_id) REFERENCES categories(category_id)
 );
 
 CREATE TABLE orders (

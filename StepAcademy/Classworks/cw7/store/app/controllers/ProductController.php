@@ -38,6 +38,7 @@ class ProductController extends Controller {
                     'name' => $item['product_name'],
                     'description' => $item['description'],
                     'age_range' => $item['age_range'],
+                    'player_number' => $item['player_number'],
                     'weight' => $item['weight'],
                     'dimensions' => $item['dimensions'],
                     'release_date' => $item['release_date'],
