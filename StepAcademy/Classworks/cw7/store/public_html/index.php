@@ -1,6 +1,7 @@
 <?php
 
 ini_set("display_errors", 1);
+session_start();
 
 require_once __DIR__ . '/../app/bootstrap.php';
 
@@ -23,7 +24,7 @@ $route->add('/', function() {
     $controller->index();
 });
 
-$route->add('/product/', function() {
+$route->add('/products/', function() {
     loadController('ProductController');
     $controller = new ProductController();
     $controller->index();
@@ -33,6 +34,24 @@ $route->add('/product/{id}/', function($id) {
     loadController('ProductController');
     $controller = new ProductController();
     $controller->show($id);
+});
+
+$route->add('/login/', function() {
+    loadController('UserController');
+    $controller = new UserController();
+    $controller->login();
+});
+
+$route->add('/register/', function() {
+    loadController('UserController');
+    $controller = new UserController();
+    $controller->register();
+});
+
+$route->add('/logout/', function() {
+    loadController('UserController');
+    $controller = new UserController();
+    $controller->logout();
 });
 
 // Получение URI
