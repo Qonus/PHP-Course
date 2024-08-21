@@ -9,7 +9,11 @@ class UserController extends Controller {
     }
 
     public function index() {
-        // Здесь будет личный кабинет пользователя
+
+        $this->view->render('users/profile', [
+            'title' => 'Profile',
+            'error' => "User doesn't exist"
+        ]);
     }
 
     public function register() {

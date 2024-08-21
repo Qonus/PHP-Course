@@ -42,6 +42,12 @@ $route->add('/login/', function() {
     $controller->login();
 });
 
+$route->add('/profile/', function() {
+    loadController('UserController');
+    $controller = new UserController();
+    $controller->index();
+});
+
 $route->add('/register/', function() {
     loadController('UserController');
     $controller = new UserController();
