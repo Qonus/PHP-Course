@@ -24,6 +24,10 @@ class ProductController extends Controller {
         }
     }
 
+    public function search($prompt) {
+        
+    }
+
     public function show($id) {
         try {
             $productModel = new ProductModel();

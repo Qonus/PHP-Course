@@ -27,10 +27,14 @@ class UserController extends Controller {
                 "password" => $_POST["password"],
             ];
             $confirm_password = $_POST["confirm_password"];
-            if ($confirm_password != $data['password']) {
-                $this->view->render('users/register', [
-                    'title' => 'Register',
-                    'error' => "Unable to register, your passwords don't match"
+            if ($confirm_password != $data["password"]) {
+                $this->view->render("users/register", [
+                    "title" => "Register",
+                    "first_name" => $_POST["first_name"],
+                    "last_name" => $_POST["last_name"],
+                    "phone" => $_POST["phone"],
+                    "email" => $_POST["email"],
+                    "error" => "Unable to register, your passwords don't match"
                 ]);
                 return;
             }
