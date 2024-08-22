@@ -2,6 +2,8 @@
     <nav>
         <ul style="display: flex; flex-direction: row; list-style; none; gap: 10px">
             <li><a href="/">Home</a></li>
+            <li><a href="/contacts">Contacts</a></li>
+            <li><a href="/about">About</a></li>
             <li><a href="/products/">Products</a></li>
             <?php if (!isset($_SESSION["user"])): ?>
                 <li><a href="/login/">Login</a></li>

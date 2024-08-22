@@ -24,6 +24,18 @@ $route->add('/', function() {
     $controller->index();
 });
 
+$route->add('/contacts', function() {
+    loadController('ContactsController');
+    $controller = new ContactsController();
+    $controller->index();
+});
+
+$route->add('/about', function() {
+    loadController('AboutController');
+    $controller = new AboutController();
+    $controller->index();
+});
+
 $route->add('/products/', function() {
     loadController('ProductController');
     $controller = new ProductController();
