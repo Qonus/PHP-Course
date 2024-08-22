@@ -22,12 +22,12 @@ class CategoryController extends Controller {
         }
     }
 
-    public function show($category_name) {
+    public function show($category_id) {
         try {
             $categoryModel = new CategoryModel();
-            $category = $categoryModel->getCategoryByName($category_name);
+            $category = $categoryModel->getCategoryById($category_id);
             if (!$category) {
-                echo "Category $category_name doesn't exist";
+                echo "Category doesn't exist";
                 return;
             }
             $productModel = new ProductModel();

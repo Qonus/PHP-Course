@@ -14,4 +14,4 @@
     
 </div>
 
-<a class='card' href='/products/'><h2>Back to all products</h2></a>;
+<a class='card' href='/products/'><h2>Back to all products</h2></a>

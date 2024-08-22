@@ -5,8 +5,8 @@ function generate_tree_of_categories($categories, int $parent) {
     foreach ($categories as $category) {
         $category = (array)$category;
         if($category["parent_category_id"] == $parent || ($category["parent_category_id"] == null && $parent == -1)) {
-            echo "<li class='card'><a style='color: black;' href='/categories/{$category['category_name']}/'>";
-            echo $category["category_name"];
+            echo "<li class='card'><a style='color: black;' href='/category/{$category['category_id']}/'>";
+            echo "<h3>{$category["category_name"]}</h3>";
             generate_tree_of_categories($categories, $category["category_id"]);
             echo "</a></li>";
         }

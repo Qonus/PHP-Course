@@ -30,7 +30,7 @@ $route->add('/categories/', function() {
     $controller->index();
 });
 
-$route->add('/categories/{category_name}/', function($category_name) {
+$route->add('/category/{category_name}/', function($category_name) {
     loadController('CategoryController');
     $controller = new CategoryController();
     $controller->show($category_name);
