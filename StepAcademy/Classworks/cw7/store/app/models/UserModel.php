@@ -4,6 +4,14 @@ class UserModel extends Model {
     protected $db;
     protected $table = "users";
 
+    public function getUserById($userId) {
+        $sql = "SELECT * FROM users WHERE user_id = :user_id";
+        $args = [
+            ":user_id" => $userId
+        ];
+        return (array)$this->db->getRow($sql, $args);
+    }
+
     public function getUser($data): ?array {
         $sql = "SELECT * FROM users WHERE email LIKE :email AND password = :password";
         $args = [
@@ -32,6 +40,10 @@ class UserModel extends Model {
         }
         $sql = "INSERT INTO users (user_type, first_name, last_name, email, phone, password) VALUES (:user_type, :first_name, :last_name, :email, :phone, :password)";
         return $this->db->insert($sql, $data);
+    }
+
+    public function getAllUsers() {
+        return (array)$this->db->getAll("SELECT * FROM users");
     }
 }
 

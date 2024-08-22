@@ -30,6 +30,12 @@ $route->add('/categories/', function() {
     $controller->index();
 });
 
+$route->add('/orders/', function() {
+    loadController('OrdersController');
+    $controller = new OrdersController();
+    $controller->index();
+});
+
 $route->add('/products/', function() {
     loadController('ProductController');
     $controller = new ProductController();
