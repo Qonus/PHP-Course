@@ -12,6 +12,14 @@ class CategoryModel extends Model {
         return (array)$this->db->getRow($sql, $args);
     }
 
+    public function getCategoryByName($category_name) {
+        $sql = "SELECT * FROM categories WHERE category_name = :category_name";
+        $args = [
+            ":category_name" => $category_name
+        ];
+        return (array)$this->db->getRow($sql, $args);
+    }
+
     public function getAllCategories() {
         return $this->db->getAll("SELECT * FROM categories");
     }

@@ -1,12 +1,13 @@
 <?php
 
 require_once __DIR__ . '/../models/CategoryModel.php';
+require_once __DIR__ . '/../models/ProductModel.php';
 
 class CategoryController extends Controller {
     public function index() {
         try {
-            $categoriesModel = new CategoryModel();
-            $categories = $categoriesModel->getAllCategories();
+            $categoryModel = new CategoryModel();
+            $categories = $categoryModel->getAllCategories();
             
             if ($categories) {
                 $this->view->render('categories/categories', [
@@ -14,11 +15,30 @@ class CategoryController extends Controller {
                     'categories' => $categories
                 ]);
             } else {
-                // Обработка ситуации, когда продукты не найден
                 echo "Categories not found.";
             }
         } catch (Exception $e) {
-            // Обработка ошибки, если произошла ошибка при поиске продукта или рендеринге шаблона
+            echo "Error: " . $e->getMessage();
+        }
+    }
+
+    public function show($category_name) {
+        try {
+            $categoryModel = new CategoryModel();
+            $category = $categoryModel->getCategoryByName($category_name);
+            if (!$category) {
+                echo "Category $category_name doesn't exist";
+                return;
+            }
+            $productModel = new ProductModel();
+            $products = $productModel->getAllProductsInCategory($category['category_id']);
+            
+            $this->view->render('products/products', [
+                'title' => 'Products',
+                'products' => $products,
+                'back_link' => '/categories/'
+            ]);
+        } catch (Exception $e) {
             echo "Error: " . $e->getMessage();
         }
     }

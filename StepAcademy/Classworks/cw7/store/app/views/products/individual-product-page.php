@@ -1,4 +1,4 @@
-<div class="card product-card">
+<div class="card">
     <h3>Category: <?=$category?></h3>
     <h2>Product: <?=$name?></h2>
     <a href="/"><h2>Buy <?=$price?>$</h2></a>
@@ -14,4 +14,4 @@
     
 </div>
 
-<a class="card" href="/products/"><h2>Back</h2></a>
+<a class='card' href='/products/'><h2>Back to all products</h2></a>;

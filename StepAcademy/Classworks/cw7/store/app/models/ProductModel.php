@@ -17,6 +17,14 @@ class ProductModel extends Model {
         return (array)$this->db->getAll($sql);
     }
 
+    public function getAllProductsInCategory($category_id) {
+        $sql = 'SELECT * FROM products WHERE category_id = :category_id';
+        $args = [
+            ':category_id' => $category_id
+        ];
+        return (array)$this->db->getAll($sql, $args);
+    }
+
     public function getAllProducts() {
         return (array)$this->db->getAll("SELECT * FROM products");
     }
