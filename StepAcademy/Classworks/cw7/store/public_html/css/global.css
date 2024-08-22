@@ -21,6 +21,10 @@ body {
   margin: 0 auto;
 }
 
+.categories {
+  margin: 5px 20px;
+}
+
 .card {
   color: black;
   text-align: center;
@@ -47,6 +51,7 @@ body {
   flex-direction: column;
   gap: 10px;
 }
+
 .info > * {
   margin: 0;
 }

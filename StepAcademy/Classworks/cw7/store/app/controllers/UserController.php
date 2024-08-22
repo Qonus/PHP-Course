@@ -52,22 +52,19 @@ class UserController extends Controller {
     }
 
     public function login() {
-        // Если к серверу отправлен POST-запрос
         if ($_SERVER["REQUEST_METHOD"] === "POST") { 
-            $email = $_POST["email"]; // Получаем данные из POST-запроса
-            $password = $_POST["password"]; // Получаем пароль из POST-запроса
-            $result = $this->model->authUser($email, $password); // Получаем информацию из базы данных
-            if ($result) { // Если пользователь найден
-                $_SESSION["user"] = $result; // Сохраняем информацию о пользователе в сессии
-                header("Location: /"); // Перенаправляем пользователя на главную страницу
-            // Если пользователь не найден
+            $email = $_POST["email"];
+            $password = $_POST["password"];
+            $result = $this->model->authUser($email, $password);
+            if ($result) {
+                $_SESSION["user"] = $result;
+                header("Location: /");
             } else {
                 $this->view->render('users/login', [
                     'title' => 'Login',
-                    'error' => 'Неверный логин или пароль' // Рендерим страницу с сообщением об ошибке
+                    'error' => 'Invalid email or password'
                 ]);
             }
-        // Если к серверу не отправлен запрос:
         } else {
             $this->view->render('users/login', [
                 'title' => 'Login'
